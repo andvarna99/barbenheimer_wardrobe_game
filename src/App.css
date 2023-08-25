@@ -1,38 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Didact+Gothic&family=Montserrat:wght@500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
+  background-image: url("./img/Barbie_bg.png");
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  z-index: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-content {
+  display:flex;
+  height: 100%;
+  width:100%;
+  z-index: 1;
+  justify-content: space-between;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+/*sidebar content*/
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.sidebar {
+  background-color: #fff;
+  height: 849px;
+  width: 271px;
+  border-radius: 10px;
+  margin-top: 4rem;
+  margin-left: 4rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.logo {
+  background-image: url("./img/logo.png");
+  background-repeat: no-repeat;
+  width: 195px;
+  height: 58px;
+  justify-content: center;
+  padding: 10px;
+  margin:20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*outfit options*/
+
+.outfit-options {
+  height: 212px;
+  width: 271px;
+  margin: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.hats, .outfits, .shoes {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.hats.active, .outfits.active, .shoes.active{
+  border-left: 5px solid #E9609B !important;
+  color: #E9609B;
+}
+
+button.hats, button.outfits, button.shoes {
+  border: none;
+  background-color: transparent;
+}
+
+button.hats:hover, button.outfits:hover, button.shoes:hover{
+  border-left: 5px solid #FFD7EE;
+}
+
+.hat-icon, .outfit-icon, .shoe-icon {
+  height: 50px !important;
+  width: 50px !important;
+  margin-left: -30px;
+  margin-right: 25px;
+}
+
+.hat-text, .outfit-text, .shoe-text {
+  font-family: 'Didact Gothic', sans-serif;
+  color: #aaa ;
+}
+
+/*model options*/
+
+.model-options {
+  background-color: #F5EAEF;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding-left: 20px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  width: 230px;
+  height: 183px !important;
+}
+
+button.barbie-model-selector, button.murphy-model-selector {
+  padding-left: 20px;
+  border: none;
+  background-color: transparent;
+}
+
+.barbie-profile.active {
+  border: 2px solid #E9609B;
+}
+
+.barbie-profile, .murphy-profile {
+  height: 54px;
+  width:54px;
+  background-repeat: no-repeat;
+  background-position:center;
+  border-radius: 50%;
+  margin: auto;
+}
+
+button.barbie-profile:hover, button.murphy-profile:hover {
+  border: 2px solid #E9609B;
+  width: 56px;
+  height: 56px;
+}
+
+
+.barbie-profile {
+  background-image: url("./img/barbie _icon_1.png");
+  object-position: left center !important;
+  height: 54px;
+  width: 54px;
+
+}
+
+.murphy-profile {
+  background-image: url("./img/murphy 2.png");
+  object-position: center;
+}
+
+.barbie-profile-text, .murphy-profile-text {
+  padding-left: 20px;
+  font-family: 'Didact Gothic', sans-serif;
+}
+
+.barbie-header, .murphy-header {
+  display: flex;
+  justify-content: start;
+}
+
+.barbie-header-text, .murphy-header-text {
+  font-size: xx-small;
+  color: #adadad;
+  display: flex;
+  justify-content: start;
+}
+
+.download-btn {
+  background-color: #E9609B;
+  color: #ffffff;
+  border:none;
+  padding: 5px 20px;
+  margin-top: -40px;
+  font-family: "Didact Gothic", sans-serif;
+}
+
+.download-btn.hover {
+  background-color: #F5EAEF !important;
+  color: #E9609B !important;
+  border:2px solid #E9609B;
+}
+
+.bi.bi-download {
+  color: #ffffff;
+}
+
+.download-btn:hover .bi.bi-download{
+  color: #E9609B !important;
+}
+
+/*background options*/
+
+.background-options {
+  margin-top: 20px;
+  display: flex;
+}
+
+.barbie-btn, .murphy-btn {
+  display: flex;
+  background-color: #F5EAEF;
+  margin: 5px;
+  padding: 15px 20px;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  border:none;
+}
+.barbie-btn:hover, .murphy-btn:hover {
+  border: 2px solid #E9609B;
+}
+
+.barbie-btn.active{
+  border: 2px solid #E9609B;
+}
+
+.barbie-btn {
+  padding: 15px 20px;
+}
+
+.barbie-btn:active {
+
+}
+
+.murphy-btn {
+  padding: 15px 10px;
+}
+
+.barbie-icon, .murphy-icon {
+  height: 25px;
+  width: 20px;
+  margin-right: 3px;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position:center;
+  align-items: center;
+}
+
+.barbie-btn-text {
+  font-size: large;
+  color: #E9609B;
+  font-family: 'Abel', sans-serif;
+}
+
+.murphy-btn-text {
+  font-size: x-small;
+  color: #D2D2D2;
+  font-family: "Montserrat", sans-serif;
+}
+
+/*dev highlight*/
+
+.dev-profile {
+  display: flex;
+  padding-top: 10px;
+  margin-top: 20px;
+}
+.dev-profile-icon {
+  height: 54px;
+  width: 54px;
+  background-image: url("./img/barbie _icon_1.png");
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  border: 2px solid #E9609B;
+  margin: auto;
+}
+
+.dev-profile-text {
+  font-family: "Didact Gothic", sans-serif;
+  padding-left: 10px;
+  margin-top: 15px;
+}
+
+.dev-header {
+  font-size: large;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.dev-header-text {
+  color: #adadad;
+  font-size: small;
+}
+
+/*model content*/
+
+.model {
+  background-image: url("./img/barbie_model_1.png");
+  background-repeat: no-repeat;
+  width: 469px;
+  height: 828px;
+  object-fit: cover;
+  margin-left: 3rem;
+  margin-top: 3rem;
+}
+
+/*wardrobe content*/
+
+.wardrobe {
+  width: 40%;
+  background-image: url("./img/wardrobe.png");
+  background-repeat: no-repeat;
+  object-fit: cover;
 }
