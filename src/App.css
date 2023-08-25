@@ -8,7 +8,6 @@
 
 .App {
   text-align: center;
-  background-image: url("./img/Barbie_bg.png");
   background-repeat: no-repeat;
   height: 100vh;
   width: 100%;
@@ -38,8 +37,7 @@
   height: 849px;
   width: 271px;
   border-radius: 10px;
-  margin-top: 4rem;
-  margin-left: 4rem;
+  margin: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -293,14 +291,24 @@ button.barbie-profile:hover, button.murphy-profile:hover {
 
 /*model content*/
 
-.model {
+.barbie-model {
   background-image: url("./img/barbie_model_1.png");
+  display:block;
   background-repeat: no-repeat;
   width: 469px;
   height: 828px;
   object-fit: cover;
-  margin-left: 3rem;
-  margin-top: 3rem;
+  margin: 4rem 4rem 4rem 18rem;
+}
+
+.murphy-model {
+  background-image: url("./img/barbie dress model 1.png");
+  display:block;
+  background-repeat: no-repeat;
+  width: 469px;
+  height: 828px;
+  object-fit: cover;
+  margin: 4rem 4rem 4rem 18rem;
 }
 
 /*wardrobe content*/

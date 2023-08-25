@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import barbieIcon from ".//img/barbie_icon_2.png";
 import murphyIcon from ".//img/nuke 1.png";
 
-export default function BackgroundOptions({ onBarbieBtnClick, onMurphyBtnClick }) {
+export default function BackgroundOptions({ onBarbieBgBtnClick, onMurphyBgBtnClick }) {
     const [activeBackgroundOptionsBtn, setActiveBackgroundOptionsBtn] = useState("barbie-btn");
 
 
@@ -16,7 +16,7 @@ export default function BackgroundOptions({ onBarbieBtnClick, onMurphyBtnClick }
                     onMouseEnter={() => setIsBarbieBtnHovered(true)}
                     onMouseLeave={() => setIsBarbieBtnHovered(false)}
                     onClick={() => {setActiveBackgroundOptionsBtn("barbie-btn");
-                        onBarbieBtnClick()}
+                        onBarbieBgBtnClick()}
             }>
                 <img className="barbie-icon"
                      src={barbieIcon}
@@ -30,7 +30,7 @@ export default function BackgroundOptions({ onBarbieBtnClick, onMurphyBtnClick }
                     onMouseLeave={() => setIsMurphyBtnHovered(false)}
                     onClick={() => {
                         setActiveBackgroundOptionsBtn("murphy-btn");
-                        onMurphyBtnClick();
+                        onMurphyBgBtnClick();
                     }}>
                 <img className="murphy-icon"
                         src={murphyIcon}

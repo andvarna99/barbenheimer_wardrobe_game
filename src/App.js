@@ -7,15 +7,23 @@ import './App.css';
 
 function App() {
     const [isDownloadHovered, setIsDownloadHovered] = useState(false);
-    const [backgroundImage, setBackgroundImage] = useState("barbie");
 
-    const handleBarbieBtnClick = () => {
+    const [modelImage, setModelImage] = useState("barbie");
+    const handleBarbieModelBtnClick = () => {
+        setModelImage("barbie");
+    }
+    const handleMurphyModelBtnClick = () => {
+        setModelImage("murphy");
+    }
+
+    const [backgroundImage, setBackgroundImage] = useState("barbie");
+    const handleBarbieBgBtnClick = () => {
         setBackgroundImage("barbie");
     };
-
-    const handleMurphyBtnClick = () => {
+    const handleMurphyBgBtnClick = () => {
         setBackgroundImage("murphy");
     };
+
     return (
       <div className={`App ${backgroundImage}-bg`} >
           <div className="main-content">
@@ -23,7 +31,8 @@ function App() {
                   <div className="logo">
                   </div>
                   <OutfitOptions></OutfitOptions>
-                  <ModelOptions></ModelOptions>
+                  <ModelOptions onBarbieModelBtnClick={handleBarbieModelBtnClick}
+                                onMurphyModelBtnClick={handleMurphyModelBtnClick}></ModelOptions>
                   <button className={`download-btn rounded-pill ${isDownloadHovered ? "hover" : ""}`}
                           type={"submit"}
                           onMouseEnter={() => setIsDownloadHovered(true)}
@@ -37,8 +46,8 @@ function App() {
                       </svg>
                       Download
                   </button>
-                  <BackgroundOptions onBarbieBtnClick={handleBarbieBtnClick}
-                                     onMurphyBtnClick={handleMurphyBtnClick}></BackgroundOptions>
+                  <BackgroundOptions onBarbieBgBtnClick={handleBarbieBgBtnClick}
+                                     onMurphyBgBtnClick={handleMurphyBgBtnClick}></BackgroundOptions>
                   <div className="dev-profile">
                       <div className="dev-profile-icon"></div>
                       <div className="dev-profile-text">
@@ -47,7 +56,7 @@ function App() {
                       </div>
                   </div>
               </div>
-              <div className="model">
+              <div className={`model ${modelImage}-model`}>
               </div>
               <div className="wardrobe">
                   <div className="clothes">

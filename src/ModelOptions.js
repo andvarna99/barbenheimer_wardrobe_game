@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 
-export default function ModelOptions() {
+export default function ModelOptions({onBarbieModelBtnClick, onMurphyModelBtnClick}) {
     const [activeModelOptionsBtn, setActiveModelOptionsBtn] = useState(null);
 
     const [isBarbieProfileHovered, setIsBarbieProfileHovered] = useState(false);
@@ -15,7 +15,10 @@ export default function ModelOptions() {
                     type={"submit"}
                     onMouseEnter={() => setIsBarbieProfileHovered(true)}
                     onMouseLeave={() => setIsBarbieProfileHovered(false)}
-                    onClick={() => setActiveModelOptionsBtn("barbie-model-selector")}>
+                    onClick={() => {
+                        setActiveModelOptionsBtn("barbie-model-selector");
+                        onBarbieModelBtnClick();
+                    }}>
                 <div className="barbie-profile" style={{border: activeModelOptionsBtn === "barbie-model-selector" ? '2px solid #E9609B' : isBarbieProfileHovered ? "2px solid #E9609B" : 'none',}}></div>
                 <div className="barbie-profile-text col">
                     <h5 className="barbie-header">Barbie</h5>
@@ -26,7 +29,10 @@ export default function ModelOptions() {
                     type={"submit"}
                     onMouseEnter={() => setIsMurphyProfileHovered(true)}
                     onMouseLeave={() => setIsMurphyProfileHovered(false)}
-                    onClick={() => setActiveModelOptionsBtn("murphy-model-selector")}>
+                    onClick={() => {
+                        setActiveModelOptionsBtn("murphy-model-selector");
+                        onMurphyModelBtnClick();
+                    }}>
                 <div className="murphy-profile "
                      style={{border: activeModelOptionsBtn === "murphy-model-selector" ? '2px solid #E9609B' : isMurphyProfileHovered ? "2px solid #E9609B" : 'none',}}></div>
                 <div className="murphy-profile-text col">
