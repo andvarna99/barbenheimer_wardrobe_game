@@ -1,19 +1,13 @@
 import React, {useState} from 'react';
 import barbieIcon from ".//img/barbie_icon_2.png";
 import murphyIcon from ".//img/nuke 1.png";
-import barbieBackground from ".//img/Barbie_bg.png";
 
+export default function BackgroundOptions({ onBarbieBtnClick, onMurphyBtnClick }) {
+    const [activeBackgroundOptionsBtn, setActiveBackgroundOptionsBtn] = useState("barbie-btn");
 
-export default function ModelOptions() {
-    const [activeBackgroundOptionsBtn, setActiveBackgroundOptionsBtn] = useState(null);
 
     const [isBarbieBtnHovered, setIsBarbieBtnHovered] = useState(false);
     const [isMurphyBtnHovered, setIsMurphyBtnHovered] = useState(false);
-
-    function setBackgroundColorBarbie() {
-        const barbieBackground = "barbieBackground";
-
-    }
 
     return(
         <div className="background-options">
@@ -22,7 +16,7 @@ export default function ModelOptions() {
                     onMouseEnter={() => setIsBarbieBtnHovered(true)}
                     onMouseLeave={() => setIsBarbieBtnHovered(false)}
                     onClick={() => {setActiveBackgroundOptionsBtn("barbie-btn");
-                    setBackgroundColorBarbie()}
+                        onBarbieBtnClick()}
             }>
                 <img className="barbie-icon"
                      src={barbieIcon}
@@ -34,7 +28,10 @@ export default function ModelOptions() {
                     style={{border: activeBackgroundOptionsBtn === "murphy-btn" ? '2px solid #E9609B' : isMurphyBtnHovered ? "2px solid #E9609B" : 'none',}}
                     onMouseEnter={() => setIsMurphyBtnHovered(true)}
                     onMouseLeave={() => setIsMurphyBtnHovered(false)}
-                    onClick={() => setActiveBackgroundOptionsBtn("murphy-btn")}>
+                    onClick={() => {
+                        setActiveBackgroundOptionsBtn("murphy-btn");
+                        onMurphyBtnClick();
+                    }}>
                 <img className="murphy-icon"
                         src={murphyIcon}
                         alt={"murphy icon"}></img>

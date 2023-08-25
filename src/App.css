@@ -15,6 +15,14 @@
   z-index: 0;
 }
 
+.barbie-bg {
+  background-image: url("./img/Barbie_bg.png");
+}
+
+.murphy-bg {
+  background-image: url("./img/Oppen stage full 1.png");
+}
+
 .main-content {
   display:flex;
   height: 100%;

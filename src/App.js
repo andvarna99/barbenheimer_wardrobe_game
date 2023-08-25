@@ -6,9 +6,17 @@ import './App.css';
 
 function App() {
     const [isDownloadHovered, setIsDownloadHovered] = useState(false);
+    const [backgroundImage, setBackgroundImage] = useState("barbie");
 
+    const handleBarbieBtnClick = () => {
+        setBackgroundImage("barbie");
+    };
+
+    const handleMurphyBtnClick = () => {
+        setBackgroundImage("murphy");
+    };
     return (
-      <div className="App">
+      <div className={`App ${backgroundImage}-bg`} >
           <div className="main-content">
               <div className="sidebar">
                   <div className="logo">
@@ -28,7 +36,8 @@ function App() {
                       </svg>
                       Download
                   </button>
-                  <BackgroundOptions></BackgroundOptions>
+                  <BackgroundOptions onBarbieBtnClick={handleBarbieBtnClick}
+                                     onMurphyBtnClick={handleMurphyBtnClick}></BackgroundOptions>
                   <div className="dev-profile">
                       <div className="dev-profile-icon"></div>
                       <div className="dev-profile-text">
