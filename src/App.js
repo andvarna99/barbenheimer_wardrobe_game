@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import OutfitOptions from './OutfitOptions';
 import ModelOptions from './ModelOptions';
 import BackgroundOptions from './BackgroundOptions';
+import Footer from './Footer.js';
 import './App.css';
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
                   </div>
               </div>
           </div>
+          <Footer></Footer>
       </div>
   );
 }

@@ -311,3 +311,21 @@ button.barbie-profile:hover, button.murphy-profile:hover {
   background-repeat: no-repeat;
   object-fit: cover;
 }
+
+/*footer contetn*/
+.footer {
+  padding-top:20px;
+  background-color: #0683FF;
+  width:100%;
+  height:111px;
+  color: white;
+}
+
+.footer-btn {
+  margin-top: 10px;
+  color: #0683FF;
+  background-color: black;
+  border-radius: 5px;
+  border:none;
+  padding: 0 5px 5px 5px;
+}
