@@ -1,22 +1,61 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import Wardrobe from "./Wardrobe";
 import OutfitOptions from './OutfitOptions';
 import ModelOptions from './ModelOptions';
 import BackgroundOptions from './BackgroundOptions';
 import Footer from './Footer.js';
 import './App.css';
+import { DropTarget, DragDropContainer } from "react-drag-drop-container";
+
+
+const getScreenshot = async (ref, width, height) => {
+    const canvas = await html2canvas(ref.current, { width, height });
+    return canvas.toDataURL("image/png");
+};
+const getPDF = async (ref, width, height) => {
+    const screenshot = await getScreenshot(ref, width, height);
+    const pdf = new jsPDF("landscape", "mm", [width, height]);
+    pdf.addImage(screenshot, "PNG", 0, 0, width, height);
+    return pdf;
+};
 
 function App() {
-    const [isDownloadHovered, setIsDownloadHovered] = useState(false);
+    const appRef = useRef(null);
 
+    const [isDressVisible, setIsDressVisible] = useState(true);
+    const [isHatVisible, setIsHatVisible] = useState(true);
+    const [isShoeVisible, setIsShoeVisible] = useState(true);
+    const [isSidebarVisible, setIsSidebarVisible] = useState(true);
+    const [isWardrobeVisible, setIsWardrobeVisible] = useState(true);
+
+    const [selectedOutfit, setSelectedOutfit] = useState(null);
     const [modelImage, setModelImage] = useState("barbie");
+    const [backgroundImage, setBackgroundImage] = useState("barbie");
+
+    const [selectedHat, setSelectedHat] = useState(null);
+    const [selectedDress, setSelectedDress] = useState(null);
+    const [selectedShoe, setSelectedShoe] = useState(null);
+
+    const handleOutfitClick = (outfitType) => {
+        setSelectedOutfit(outfitType);
+    };
+    const handleOutfitItemClick = (outfitType) => {
+        if (outfitType === 'hat1') {
+            setSelectedHat('hat1');
+        } else if (outfitType === 'dress') {
+            setSelectedDress(outfitType);
+        } else if (outfitType === 'shoe3') {
+            setSelectedShoe('shoe3');
+        }
+    };
     const handleBarbieModelBtnClick = () => {
         setModelImage("barbie");
     }
     const handleMurphyModelBtnClick = () => {
         setModelImage("murphy");
     }
-
-    const [backgroundImage, setBackgroundImage] = useState("barbie");
     const handleBarbieBgBtnClick = () => {
         setBackgroundImage("barbie");
     };
@@ -24,28 +63,39 @@ function App() {
         setBackgroundImage("murphy");
     };
 
+    const handleGetPDF = async () => {
+        setIsSidebarVisible(false);
+        setIsWardrobeVisible(false)
+
+        const width = 1920;
+        const height = 1080;
+
+        const canvas = await html2canvas(appRef.current, { width, height });
+        const screenshot = canvas.toDataURL('image/png');
+        const pdf = await getPDF(appRef, width, height);
+
+        pdf.save('app.pdf');
+
+        setIsSidebarVisible(true);
+        setIsWardrobeVisible(true);
+    };
+
     return (
-      <div className={`App ${backgroundImage}-bg`} >
-          <div className="main-content">
-              <div className="sidebar">
+      <div className={`App ${backgroundImage}-bg `} ref={appRef}>
+          <div className={`main-content`}>
+              <div className={`sidebar ${isSidebarVisible ? "sidebar-visible" : "sidebar-hidden"}`}>
                   <div className="logo">
                   </div>
-                  <OutfitOptions></OutfitOptions>
+                  <OutfitOptions selectedHat={selectedHat}
+                                 selectedDress={setSelectedDress}
+                                 selectedShoe={selectedShoe}
+                                 isDressVisible={setIsDressVisible}
+                                 isHatVisible={setIsHatVisible}
+                                 isShoeVisible={setIsShoeVisible}
+                                 onOutfitOptionsClick={handleOutfitClick}></OutfitOptions>
                   <ModelOptions onBarbieModelBtnClick={handleBarbieModelBtnClick}
-                                onMurphyModelBtnClick={handleMurphyModelBtnClick}></ModelOptions>
-                  <button className={`download-btn rounded-pill ${isDownloadHovered ? "hover" : ""}`}
-                          type={"submit"}
-                          onMouseEnter={() => setIsDownloadHovered(true)}
-                          onMouseLeave={() => setIsDownloadHovered(false)}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                           className="bi bi-download me-2" viewBox="0 0 16 16">
-                          <path
-                              d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                          <path
-                              d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-                      </svg>
-                      Download
-                  </button>
+                                onMurphyModelBtnClick={handleMurphyModelBtnClick}
+                                onDownloadClick={handleGetPDF}></ModelOptions>
                   <BackgroundOptions onBarbieBgBtnClick={handleBarbieBgBtnClick}
                                      onMurphyBgBtnClick={handleMurphyBgBtnClick}></BackgroundOptions>
                   <div className="dev-profile">
@@ -56,14 +106,50 @@ function App() {
                       </div>
                   </div>
               </div>
-              <div className={`model ${modelImage}-model`}>
-              </div>
-              <div className="wardrobe">
-                  <div className="clothes">
-                      <div className="dress_1">
-                      </div>
+              <DropTarget targetKey={"model"}
+                          dropData={"clothes"} style={"width:400px;"}>
+                  <div className={`model ${modelImage}-model`}>
                   </div>
-              </div>
+              </DropTarget>
+              <Wardrobe selectedOutfit={selectedOutfit}
+                        isWardrobeVisible={isWardrobeVisible}
+                        isDressVisible={isDressVisible}
+                        isHatVisible={isHatVisible}
+                        isShoeVisible={isShoeVisible}
+                        handleOutfitItemClick={handleOutfitItemClick}
+                        onOutfitDragEnd={() => {
+                            console.log("dropped");
+                              if(selectedHat === "hat1"){
+                                  console.log("hat1 dropped");
+                                  setIsHatVisible(false);
+                              }
+                              if(selectedDress === "dress1"){
+                                  console.log("dress1 dropped");
+                                  setModelImage('barbie-2');
+                                  setIsDressVisible(false);
+
+                              }
+                              if(selectedDress === "dress2"){
+                                  console.log("dress2 dropped");
+                                  setModelImage('barbie-3');
+                                  setIsDressVisible(false);
+
+                              }
+                              if(selectedDress === "dress3"){
+                                  console.log("dress3 dropped");
+                                setModelImage('barbie-4');
+                                setIsDressVisible(false);
+
+                              }
+                              if(selectedShoe === "shoe3"){
+                                  console.log("shoe3 dropped");
+                                  setIsShoeVisible(false);
+                              }
+                            }
+                        }
+                        >
+
+              </Wardrobe>
           </div>
           <Footer></Footer>
       </div>
