@@ -488,18 +488,20 @@ button.barbie-profile:hover, button.murphy-profile:hover {
 }
 
 img.dress, img.hat, .img.shoe {
-  width:200px !important;
-  height:300px !important;
+  width: 200px !important;
+  height: 300px !important;
 }
 
-.dress2, .shoe3 {
-  width:200px !important;
-  height:400px !important;
+.dress1, .dress2, .shoe3 {
+  width: 200px !important;
+  height: 400px !important;
+  z-index: 3 !important;
 }
 
 .hat1, .hat2, .shoe2, .shoe3 {
-  width:200px !important;
-  height:200px !important;
+  width: 200px !important;
+  height: 200px !important;
+  z-index: 3 !important;
 }
 
 /*footer content*/
