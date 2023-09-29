@@ -86,6 +86,10 @@ body {
     display:none;
   }
 
+  .murphy-profile {
+    margin-bottom: 5px;
+  }
+
   .barbie-model-selector, .murphy-model-selector {
     padding-left: 10px !important;
   }
@@ -121,11 +125,11 @@ body {
 
 .main-content {
   display:flex;
-  height: 100vh;
+  height: 100%;
   width:100%;
   z-index: 1;
-  justify-content: space-evenly;
-  min-height: 100vh;
+  justify-content: space-between;
+  /*min-height: 100vh;*/
 }
 
 /* Sidebar Content */
@@ -409,9 +413,9 @@ button.barbie-profile:hover, button.murphy-profile:hover {
   display:block;
   background-repeat: no-repeat;
   width: 469px;
-  height: 815px;
+  height: 800px;
   object-fit: cover;
-  margin: 1rem 4rem 8rem 8rem;
+  margin: 4rem;
   z-index: 1;
 }
 
@@ -420,9 +424,9 @@ button.barbie-profile:hover, button.murphy-profile:hover {
   display:block;
   background-repeat: no-repeat;
   width: 469px;
-  height: 828px;
+  height: 800px;
   object-fit: cover;
-  margin: 1rem 4rem 8rem 8rem;
+  margin: 4rem
 }
 
 .barbie-3-model {
@@ -431,22 +435,33 @@ button.barbie-profile:hover, button.murphy-profile:hover {
   display:block;
   background-repeat: no-repeat;
   width: 469px;
-  height: 828px;
+  height: 800px;
   background-size:contain;
   object-fit: scale-down !important;
-  margin: 1rem 4rem 8rem 8rem;
+  margin: 4rem;
 }
 
-.barbie-4-model {
+/*.barbie-4-model {*/
+/*  background-position: center;*/
+/*  background-image: url("./img/ outfit barbie dress model.png");*/
+/*  display:block;*/
+/*  background-repeat: no-repeat;*/
+/*  width: 469px;*/
+/*  height: 800px;*/
+/*  background-size:contain;*/
+/*  object-fit: scale-down !important;*/
+/*  margin: 4rem;*/
+/*}*/
+.shoe-2 {
   background-position: center;
-  background-image: url("./img/ outfit barbie dress model.png");
-  display:block;
+  background-image: url("./img/ outfit barbie shoe model 2.png");
+  display: block;
   background-repeat: no-repeat;
   width: 469px;
-  height: 828px;
-  background-size:contain;
+  height: 800px;
+  background-size: contain;
   object-fit: scale-down !important;
-  margin: 1rem 4rem 8rem 8rem;
+  margin: 4rem;
 }
 
 .murphy-model {
@@ -454,9 +469,9 @@ button.barbie-profile:hover, button.murphy-profile:hover {
   display:block;
   background-repeat: no-repeat;
   width: 469px;
-  height: 828px;
+  height: 800px;
   object-fit: cover;
-  margin: 1rem 4rem 8rem 8rem;
+  margin: 4rem;
 }
 
 /*wardrobe content*/
@@ -471,6 +486,8 @@ button.barbie-profile:hover, button.murphy-profile:hover {
   /*display:grid;*/
   padding: 8rem 0 0 13rem;
   display:grid;
+  height: 950px;
+  margin: 0;
 }
 
 .wardrobe-hidden {
@@ -504,25 +521,25 @@ img.dress, img.hat, .img.shoe {
   z-index: 3 !important;
 }
 
-/*footer content*/
-.footer {
-  padding-top:20px;
-  background-color: #0683FF;
-  width:100%;
-  height:122px;
-  color: white;
-  position: absolute;
-  bottom: 0;
-  top: 100%;
-  min-height: 5vh;
-  /*margin-top: 20px;*/
-}
+/*!*footer content*!*/
+/*.footer {*/
+/*  padding-top:20px;*/
+/*  background-color: #0683FF;*/
+/*  width:100%;*/
+/*  height:122px;*/
+/*  color: white;*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  top: 950px;*/
+/*  min-height: 5vh;*/
+/*  !*margin-top: 20px;*!*/
+/*}*/
 
-.footer-btn {
-  margin-top: 10px;
-  color: #0683FF;
-  background-color: black;
-  border-radius: 5px;
-  border:none;
-  padding: 0 5px 5px 5px;
-}
+/*.footer-btn {*/
+/*  margin-top: 10px;*/
+/*  color: #0683FF;*/
+/*  background-color: black;*/
+/*  border-radius: 5px;*/
+/*  border:none;*/
+/*  padding: 0 5px 5px 5px;*/
+/*}*/

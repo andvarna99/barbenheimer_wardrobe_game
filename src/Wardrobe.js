@@ -1,21 +1,15 @@
-import React, {useState} from 'react';
-import { DragDropContainer} from "react-drag-drop-container";
-import hatPinkImage from ".//img/hat-pink.png";
-import dressPinkImage from ".//img/dress-pink.png";
-import heelPinkImage from ".//img/high-heel-pink.png";
+import React from 'react';
 import dress1 from ".//img/barbie dress 3.png";
 import dress2 from ".//img/barbie dress 4.png";
-// import dress3 from ".//img/barbie dress 3.png";
 import shoe2 from ".//img/barbie shoe 2.png";
 import shoe3 from ".//img/barbie shoe 3.png";
 import hat1 from ".//img/barbie hat 1.png";
 import hat2 from ".//img/barbie hat 2.png";
-import murphyHat from ".//img/murphyHat.png";
 import DraggableOutfit from "./DraggableOutfit";
 
 export default function OutfitOptions({ displayStyle, setDisplayStyle, handleOutfitItemClick, setModelImage, isHatVisible, isDressVisible, isShoeVisible, selectedOutfit, setIsDressVisible, selectedHat, selectedDress, selectedShoe, setIsHatVisible, setIsShoeVisible, isWardrobeVisible, onOutfitDragEnd}) {
     return (
-        <div className={`${isWardrobeVisible ? "wardrobe-visible" : "wardrobe-hidden"}`}>
+        <div className={`col-lg-4 ${isWardrobeVisible ? "wardrobe-visible" : "wardrobe-hidden"}`}>
             <div className={`clothes`} >
                 {selectedOutfit === "hat" && isHatVisible && (
                     <>

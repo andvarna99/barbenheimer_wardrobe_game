@@ -34,7 +34,7 @@ export default function ModelOptions({resetOutfitVisibility, onBarbieModelBtnCli
                         onMurphyModelBtnClick();
                         resetOutfitVisibility();
                     }}>
-                <div className="murphy-profile "
+                <div className="murphy-profile mb-3"
                      style={{border: activeModelOptionsBtn === "murphy-model-selector" ? '2px solid #E9609B' : isMurphyProfileHovered ? "2px solid #E9609B" : 'none',}}></div>
                 <div className="murphy-profile-text col">
                     <h5 className="murphy-header">Julius</h5>

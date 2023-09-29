@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useRef, useState} from 'react';
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import Wardrobe from "./Wardrobe";
@@ -7,7 +7,7 @@ import ModelOptions from './ModelOptions';
 import BackgroundOptions from './BackgroundOptions';
 import Footer from './Footer.js';
 import './App.css';
-import { DropTarget, DragDropContainer } from "react-drag-drop-container";
+import { DropTarget } from "react-drag-drop-container";
 
 
 const getScreenshot = async (ref, width, height) => {
@@ -50,12 +50,12 @@ function App() {
         setSelectedOutfit(outfitType);
     };
     const handleOutfitItemClick = (outfitType) => {
-        if (outfitType === 'hat1') {
-            setSelectedHat('hat1');
+        if (outfitType === 'hat') {
+            setSelectedHat(outfitType);
         } else if (outfitType === 'dress') {
             setSelectedDress(outfitType);
-        } else if (outfitType === 'shoe3') {
-            setSelectedShoe('shoe3');
+        } else if (outfitType === 'shoe') {
+            setSelectedShoe(outfitType);
         }
     };
     const handleBarbieModelBtnClick = () => {
@@ -70,6 +70,16 @@ function App() {
     const handleMurphyBgBtnClick = () => {
         setBackgroundImage("murphy");
     };
+
+    const handleOnDrop = (outfitType) => {
+        if (outfitType === "hat") {
+            setIsHatVisible(false);
+        }else if (outfitType === "dress") {
+            setIsHatVisible(false);
+        } else if (outfitType === "shoe") {
+            setIsHatVisible(false);
+        }
+    }
 
     const handleGetPDF = async () => {
         setIsSidebarVisible(false);
@@ -91,7 +101,7 @@ function App() {
     return (
       <div className={`App ${backgroundImage}-bg `} ref={appRef}>
           <div className={`main-content`}>
-              <div className={`sidebar ${isSidebarVisible ? "sidebar-visible" : "sidebar-hidden"}`}>
+              <div className={`col-lg-4 sidebar ${isSidebarVisible ? "sidebar-visible" : "sidebar-hidden"}`}>
                   <div className="logo">
                   </div>
                   <OutfitOptions selectedHat={selectedHat}
@@ -118,8 +128,47 @@ function App() {
               <DropTarget targetKey={"model"}
                           dropData={"clothes"}
                           style={"width:400px;"}
+                          onHit={ (outfitType) => {
+                              if(outfitType === "hat1"){
+                              console.log("hat1 dropped");
+                              setModelImage("hat-1");
+                              // setDisplayStyle('none');
+                              // isHatVisible(false);
+                          } else if(outfitType === "hat2"){
+                              console.log("hat2 dropped");
+                              setModelImage("hat-2");
+                              // setDisplayStyle('none');
+                              // isHatVisible(false);
+                          } else if(outfitType === "dress1"){
+                              console.log("dress1 dropped");
+                              setModelImage('barbie-2');
+                              // setDisplayStyle('none');
+                              // setIsDressVisible(false);
+                          } else if(outfitType === "dress2"){
+                              console.log("dress2 dropped");
+                              setModelImage('barbie-3');
+                              // setDisplayStyle('none');
+                              // setIsDressVisible(false);
+                          } else if(outfitType === "dress3"){
+                              console.log("dress3 dropped");
+                              // setDisplayStyle('none');
+                              // setModelImage('barbie-4');
+                              // setIsDressVisible(false);
+                          } else if(outfitType === "shoe2"){
+                              console.log("shoe2 dropped");
+                              // setDisplayStyle('none');
+                              setModelImage("shoe-2");
+                              // setIsShoeVisible(false);
+                          } else if(outfitType === "shoe3"){
+                              console.log("shoe3 dropped");
+                              setModelImage("shoe-3");
+                              // setDisplayStyle('none');
+                              // setIsShoeVisible(false);
+                          }
+                        }
+                    }
               >
-                  <div className={`model ${modelImage}-model`}>
+                  <div className={`col-lg-4 model ${modelImage}-model`}>
                   </div>
               </DropTarget>
               <Wardrobe selectedOutfit={selectedOutfit}
@@ -141,7 +190,7 @@ function App() {
 
               </Wardrobe>
           </div>
-          <Footer></Footer>
+          {/*<Footer></Footer>*/}
       </div>
   );
 }
