@@ -11,6 +11,8 @@
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "react": "^18.2.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
     "react-drag-drop-container": "^6.1.1",
     "react-scripts": "^2.1.3",

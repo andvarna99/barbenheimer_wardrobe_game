@@ -8,6 +8,8 @@ import BackgroundOptions from './BackgroundOptions';
 import Footer from './Footer.js';
 import './App.css';
 import { DropTarget, DragDropContainer } from "react-drag-drop-container";
+import { DndProvider , useDrop} from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 
 const getScreenshot = async (ref, width, height) => {
@@ -37,6 +39,42 @@ function App() {
     const [selectedHat, setSelectedHat] = useState(null);
     const [selectedDress, setSelectedDress] = useState(null);
     const [selectedShoe, setSelectedShoe] = useState(null);
+
+    const [{ canDrop, isOver }, drop] = useDrop(() => ({
+        accept: 'OUTFIT',
+        drop: (outfitType) => {
+            if(outfitType === "hat1"){
+                console.log("hat1 dropped");
+                setIsHatVisible(false);
+            }
+            if(outfitType === "dress1"){
+                console.log("dress1 dropped");
+                setModelImage('barbie-2');
+                setIsDressVisible(false);
+
+            }
+            if(outfitType === "dress2"){
+                console.log("dress2 dropped");
+                setModelImage('barbie-3');
+                setIsDressVisible(false);
+
+            }
+            if(outfitType === "shoe2"){
+                console.log("shoe2 dropped");
+                setModelImage('barbie-4');
+                setIsDressVisible(false);
+
+            }
+            if(outfitType === "shoe3"){
+                console.log("shoe3 dropped");
+                setIsShoeVisible(false);
+            }
+        },
+        collect: (monitor) => ({
+            isOver: monitor.isOver(),
+            canDrop: monitor.canDrop(),
+        }),
+    }));
 
     const handleOutfitClick = (outfitType) => {
         setSelectedOutfit(outfitType);
@@ -81,78 +119,80 @@ function App() {
     };
 
     return (
-      <div className={`App ${backgroundImage}-bg `} ref={appRef}>
-          <div className={`main-content`}>
-              <div className={`sidebar ${isSidebarVisible ? "sidebar-visible" : "sidebar-hidden"}`}>
-                  <div className="logo">
-                  </div>
-                  <OutfitOptions selectedHat={selectedHat}
-                                 selectedDress={setSelectedDress}
-                                 selectedShoe={selectedShoe}
-                                 isDressVisible={setIsDressVisible}
-                                 isHatVisible={setIsHatVisible}
-                                 isShoeVisible={setIsShoeVisible}
-                                 onOutfitOptionsClick={handleOutfitClick}></OutfitOptions>
-                  <ModelOptions onBarbieModelBtnClick={handleBarbieModelBtnClick}
-                                onMurphyModelBtnClick={handleMurphyModelBtnClick}
-                                onDownloadClick={handleGetPDF}></ModelOptions>
-                  <BackgroundOptions onBarbieBgBtnClick={handleBarbieBgBtnClick}
-                                     onMurphyBgBtnClick={handleMurphyBgBtnClick}></BackgroundOptions>
-                  <div className="dev-profile">
-                      <div className="dev-profile-icon"></div>
-                      <div className="dev-profile-text">
-                          <h5 className="dev-header">Andrea Varnado</h5>
-                          <p className="dev-header-text">Front-End Developer</p>
+        <DndProvider backend={HTML5Backend}>
+          <div className={`App ${backgroundImage}-bg `} ref={appRef}>
+              <div className={`main-content`}>
+                  <div className={`sidebar ${isSidebarVisible ? "sidebar-visible" : "sidebar-hidden"}`}>
+                      <div className="logo">
+                      </div>
+                      <OutfitOptions selectedHat={selectedHat}
+                                     selectedDress={setSelectedDress}
+                                     selectedShoe={selectedShoe}
+                                     isDressVisible={setIsDressVisible}
+                                     isHatVisible={setIsHatVisible}
+                                     isShoeVisible={setIsShoeVisible}
+                                     onOutfitOptionsClick={handleOutfitClick}></OutfitOptions>
+                      <ModelOptions onBarbieModelBtnClick={handleBarbieModelBtnClick}
+                                    onMurphyModelBtnClick={handleMurphyModelBtnClick}
+                                    onDownloadClick={handleGetPDF}></ModelOptions>
+                      <BackgroundOptions onBarbieBgBtnClick={handleBarbieBgBtnClick}
+                                         onMurphyBgBtnClick={handleMurphyBgBtnClick}></BackgroundOptions>
+                      <div className="dev-profile">
+                          <div className="dev-profile-icon"></div>
+                          <div className="dev-profile-text">
+                              <h5 className="dev-header">Andrea Varnado</h5>
+                              <p className="dev-header-text">Front-End Developer</p>
+                          </div>
                       </div>
                   </div>
-              </div>
-              <DropTarget targetKey={"model"}
-                          dropData={"clothes"} style={"width:400px;"}>
-                  <div className={`model ${modelImage}-model`}>
-                  </div>
-              </DropTarget>
-              <Wardrobe selectedOutfit={selectedOutfit}
-                        isWardrobeVisible={isWardrobeVisible}
-                        isDressVisible={isDressVisible}
-                        isHatVisible={isHatVisible}
-                        isShoeVisible={isShoeVisible}
-                        handleOutfitItemClick={handleOutfitItemClick}
-                        onOutfitDragEnd={() => {
-                            console.log("dropped");
-                              if(selectedHat === "hat1"){
-                                  console.log("hat1 dropped");
-                                  setIsHatVisible(false);
-                              }
-                              if(selectedDress === "dress1"){
-                                  console.log("dress1 dropped");
-                                  setModelImage('barbie-2');
-                                  setIsDressVisible(false);
+                  <DropTarget targetKey={"model"}
+                              dropData={"clothes"} style={"width:400px;"}>
+                      <div className={`model ${modelImage}-model`}>
+                      </div>
+                  </DropTarget>
+                  <Wardrobe selectedOutfit={selectedOutfit}
+                            isWardrobeVisible={isWardrobeVisible}
+                            isDressVisible={isDressVisible}
+                            isHatVisible={isHatVisible}
+                            isShoeVisible={isShoeVisible}
+                            handleOutfitItemClick={handleOutfitItemClick}
+                            onOutfitDragEnd={() => {
+                                console.log("dropped");
+                                  if(selectedHat === "hat1"){
+                                      console.log("hat1 dropped");
+                                      setIsHatVisible(false);
+                                  }
+                                  if(selectedDress === "dress1"){
+                                      console.log("dress1 dropped");
+                                      setModelImage('barbie-2');
+                                      setIsDressVisible(false);
 
-                              }
-                              if(selectedDress === "dress2"){
-                                  console.log("dress2 dropped");
-                                  setModelImage('barbie-3');
-                                  setIsDressVisible(false);
+                                  }
+                                  if(selectedDress === "dress2"){
+                                      console.log("dress2 dropped");
+                                      setModelImage('barbie-3');
+                                      setIsDressVisible(false);
 
-                              }
-                              if(selectedDress === "dress3"){
-                                  console.log("dress3 dropped");
-                                setModelImage('barbie-4');
-                                setIsDressVisible(false);
+                                  }
+                                  if(selectedDress === "dress3"){
+                                      console.log("dress3 dropped");
+                                    setModelImage('barbie-4');
+                                    setIsDressVisible(false);
 
-                              }
-                              if(selectedShoe === "shoe3"){
-                                  console.log("shoe3 dropped");
-                                  setIsShoeVisible(false);
-                              }
+                                  }
+                                  if(selectedShoe === "shoe3"){
+                                      console.log("shoe3 dropped");
+                                      setIsShoeVisible(false);
+                                  }
+                                }
                             }
-                        }
-                        >
+                            >
 
-              </Wardrobe>
+                  </Wardrobe>
+              </div>
+              {/*<Footer></Footer>*/}
           </div>
-          <Footer></Footer>
-      </div>
+        </DndProvider>
   );
 }
 

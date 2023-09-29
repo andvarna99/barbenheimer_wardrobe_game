@@ -11,6 +11,10 @@ body {
   box-sizing: border-box;
   position: relative;
   /*padding-bottom: 100px;*/
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .App {
