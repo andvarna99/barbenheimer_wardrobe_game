@@ -1,17 +1,16 @@
 import React from 'react';
-import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
+import { DragDropContainer } from 'react-drag-drop-container';
 
-function DraggableOutfit({ outfitType, outfitImage, onOutfitDragEnd}) {
+function DraggableOutfit({ displayStyle, setDisplayStyle, outfitType, outfitImage, setModelImage, isHatVisible, setIsDressVisible, setIsShoeVisible}) {
     return (
         <DragDropContainer
             targetKey="model"
-            dragData={outfitType}
+            dragData={{outfitType}}
             payload={outfitType}
-            onDragEnd={onOutfitDragEnd}
         >
             {outfitType === `${outfitType}` ?
                 <div>
-                    <img className={outfitType} src={outfitImage} alt={outfitType}/>
+                    <img className={outfitType} style={{ display: displayStyle }} src={outfitImage} alt={outfitType}/>
                 </div> : ""}
         </DragDropContainer>
     );

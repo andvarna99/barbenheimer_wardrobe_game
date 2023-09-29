@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Footer() {
     return (
-        <div className="footer">
+        <div className="footer ">
             <div>Made by: Andrea Varnado</div>
             <button className={`footer-btn`}>
                 <a href={`https://github.com/andvarna99`} target={`_blank`}>
