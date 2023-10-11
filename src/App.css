@@ -10,6 +10,8 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
+  overflow-y: hidden;
+  overflow-x: hidden;
   /*padding-bottom: 100px;*/
 }
 
@@ -26,7 +28,7 @@ body {
 @media (max-width: 1800px) {
 
   .sidebar-visible {
-    height: 800px !important;
+    height: 750px !important;
     width: 271px;
   }
   .wardrobe-visible {
@@ -121,11 +123,10 @@ body {
 
 .main-content {
   display:flex;
-  height: 100vh;
-  width:100%;
+  height: 100%;
+  width:100vw;
   z-index: 1;
   justify-content: space-evenly;
-  min-height: 100vh;
 }
 
 /* Sidebar Content */
@@ -376,7 +377,7 @@ button.barbie-profile:hover, button.murphy-profile:hover {
 .dev-profile-icon {
   height: 54px;
   width: 54px;
-  background-image: url("./img/barbie _icon_1.png");
+  background-image: url("./img/developer icon.png");
   object-fit: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -405,58 +406,125 @@ button.barbie-profile:hover, button.murphy-profile:hover {
 /*model content*/
 
 .barbie-model {
-  background-image: url("./img/barbie_model_1.png");
-  display:block;
+  background-image: url("./img/barbie.png");
+  display: inline-block;
   background-repeat: no-repeat;
   width: 469px;
-  height: 815px;
+  height: auto;
   object-fit: cover;
-  margin: 1rem 4rem 8rem 8rem;
+  margin: 2rem 4rem 0 8rem;
+  background-size:contain;
   z-index: 1;
 }
-
-.barbie-2-model {
-  background-image: url("./img/barbie dress model 1.png");
-  display:block;
+.barbie-hat-1-model {
+  background-image: url("./img/ outfit barbie hat model 2.png");
+  height: auto;
+  object-fit: cover;
+  background-size: contain;
+  display: inline-block;
   background-repeat: no-repeat;
   width: 469px;
-  height: 828px;
+  margin: 2rem 4rem 0 8rem;
+}
+.barbie-hat-2-model {
+  background-image: url("./img/ outfit barbie hat model 3.png");
+  height: auto;
+  object-fit: cover;
+  background-size: contain;
+  display: inline-block;
+  background-repeat: no-repeat;
+  width: 469px;
+  margin: 2rem 4rem 0 8rem;
+}
+
+.barbie-dress-2-model {
+  background-image: url("./img/barbie dress model 1.png");
+  display: block;
+  background-repeat: no-repeat;
+  width: 469px;
+  height: auto;
   object-fit: cover;
   margin: 1rem 4rem 8rem 8rem;
+  background-size:contain;
+
 }
 
-.barbie-3-model {
+.barbie-dress-3-model {
   background-position: center;
   background-image: url("./img/ outfit barbie dress model 4.png");
-  display:block;
+  display: block;
   background-repeat: no-repeat;
   width: 469px;
-  height: 828px;
+  height: auto;
   background-size:contain;
   object-fit: scale-down !important;
   margin: 1rem 4rem 8rem 8rem;
 }
 
-.barbie-4-model {
-  background-position: center;
-  background-image: url("./img/ outfit barbie dress model.png");
-  display:block;
+.barbie-shoe-2-model {
+  background-image: url("./img/ outfit barbie shoe model 2.png");
+  display: block;
   background-repeat: no-repeat;
   width: 469px;
-  height: 828px;
+  height: auto;
   background-size:contain;
-  object-fit: scale-down !important;
+  object-fit: cover !important;
   margin: 1rem 4rem 8rem 8rem;
+}
+
+.barbie-shoe-3-model {
+  background-image: url("./img/ outfit barbie shoe model 3.png");
+  display: block;
+  background-repeat: no-repeat;
+  width: 469px;
+  height: auto;
+  object-fit: cover;
+  margin: 2rem 4rem 0 8rem;
+  background-size:contain;
+
 }
 
 .murphy-model {
-  background-image: url("./img/barbie dress model 1.png");
-  display:block;
+  background-image: url("./img/julius.png");
+  display:inline-block;
   background-repeat: no-repeat;
   width: 469px;
-  height: 828px;
-  object-fit: cover;
-  margin: 1rem 4rem 8rem 8rem;
+  height: auto;
+  object-fit: cover !important;
+  background-size:contain;
+  margin: 2rem 4rem 0 8rem;
+}
+
+.murphy-hat-1-model {
+  background-image: url("./img/julias hat.png");
+  display: inline-block;
+  background-repeat: no-repeat;
+  width: 469px;
+  height: auto;
+  background-size:contain;
+  object-fit: cover !important;
+  margin: 2rem 4rem 0 8rem;
+}
+
+.murphy-shirt-1-model {
+  background-image: url("./img/Julias2.png");
+  display: inline-block;
+  background-repeat: no-repeat;
+  width: 469px;
+  height: auto;
+  background-size:contain;
+  object-fit: cover !important;
+  margin: 2rem 4rem 0 8rem;
+}
+.murphy-shoe-1-model {
+  background-image: url("./img/Julias shoes model.png");
+  display: inline-block;
+  background-repeat: no-repeat;
+  width: 469px;
+  height: auto;
+  background-size:contain;
+  object-fit: cover !important;
+  margin: 2rem 4rem 0 8rem;
 }
 
 /*wardrobe content*/
@@ -487,40 +555,69 @@ button.barbie-profile:hover, button.murphy-profile:hover {
   /*display:none;*/
 }
 
+.barbie-clothes-visible {
+  display: block;
+}
+.barbie-clothes-hidden {
+  display: none;
+}
+.murphy-clothes-visible {
+  display: block;
+}
+.murphy-clothes-hidden {
+  display: none;
+}
+
 img.dress, img.hat, .img.shoe {
   width:200px !important;
   height:300px !important;
 }
 
-.dress2, .shoe3 {
+.dress1, .dress2, .shoe3 {
   width:200px !important;
   height:400px !important;
 }
 
-.hat1, .hat2, .shoe2, .shoe3 {
+.hat1, .hat2, .shoe2, .shoe3{
   width:200px !important;
   height:200px !important;
 }
 
-/*footer content*/
-.footer {
-  padding-top:20px;
-  background-color: #0683FF;
-  width:100%;
-  height:122px;
-  color: white;
-  position: absolute;
-  bottom: 0;
-  top: 100%;
-  min-height: 5vh;
-  /*margin-top: 20px;*/
+.murphyHat1 {
+  width: 200px;
+  height: 400px;
+  background-size:contain;
+  object-fit: cover !important;
+}
+.murphyShirt1 {
+  width: 200px;
+  height: 400px;
+}
+.murphyShoe1 {
+  width: 150px;
+  height:100px;
+  margin-top:10px;
 }
 
-.footer-btn {
-  margin-top: 10px;
-  color: #0683FF;
-  background-color: black;
-  border-radius: 5px;
-  border:none;
-  padding: 0 5px 5px 5px;
-}
+/*footer content*/
+/*.footer {*/
+/*  padding-top:20px;*/
+/*  background-color: #0683FF;*/
+/*  width:100%;*/
+/*  height:122px;*/
+/*  color: white;*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  top: 100%;*/
+/*  min-height: 5vh;*/
+/*  !*margin-top: 20px;*!*/
+/*}*/
+
+/*.footer-btn {*/
+/*  margin-top: 10px;*/
+/*  color: #0683FF;*/
+/*  background-color: black;*/
+/*  border-radius: 5px;*/
+/*  border:none;*/
+/*  padding: 0 5px 5px 5px;*/
+/*}*/

@@ -9,8 +9,7 @@ import heelGreyImage from ".//img/high-heel-grey.png";
 import heelLightPinkImage from ".//img/high-heel-light-pink.png";
 import heelPinkImage from ".//img/high-heel-pink.png";
 
-export default function OutfitOptions({onOutfitOptionsClick, selectedHat, selectedDress, selectedShoe, isHatVisible, isShoeVisible, isDressVisible}) {
-    const [activeOutfitOptionsBtn, setActiveOutfitOptionsBtn] = useState(null);
+export default function OutfitOptions({ activeOutfitOptionsBtn, setActiveOutfitOptionsBtn, setIsMurphyClothesVisible, setIsBarbieClothesVisible, modelImage, onOutfitOptionsClick, selectedHat, selectedDress, selectedShoe, isMurphyHatVisible, isMurphyShoeVisible, isMurphyShirtVisible, isBarbieHatVisible, isBarbieShoeVisible, isBarbieDressVisible}) {
 
     const [isHatHovered, setIsHatHovered] = useState(false);
     const [isDressHovered, setIsDressHovered] = useState(false);
@@ -31,8 +30,17 @@ export default function OutfitOptions({onOutfitOptionsClick, selectedHat, select
                     setActiveOutfitOptionsBtn("hat");
                     console.log("hat btn clicked");
                     onOutfitOptionsClick("hat");
-                    isHatVisible(true);
-                    // selectedHat(activeOutfitOptionsBtn === "hat" ? null : "hat");
+                    if(modelImage === "barbie") {
+                        isBarbieHatVisible(true);
+                        isMurphyHatVisible(false);
+                        setIsMurphyClothesVisible(false);
+                        setIsBarbieClothesVisible(true);
+                    } else if (modelImage === "murphy"){
+                        isMurphyHatVisible(true);
+                        isBarbieHatVisible(false);
+                        setIsBarbieClothesVisible(false);
+                        setIsMurphyClothesVisible(true);
+                    }
                 }}
             >
                 <i className="hat-icon"
@@ -57,11 +65,18 @@ export default function OutfitOptions({onOutfitOptionsClick, selectedHat, select
                     setActiveOutfitOptionsBtn("dress");
                     console.log("dress btn clicked");
                     onOutfitOptionsClick("dress");
-                    // // onOutfitOptionsClick(onOutfitOptionsClick);
-                    // // onOutfitOptionsClick(selectedDress === 'outfits-1' || selectedDress === 'outfits-2' || selectedDress === 'outfits-3' ? null : 'outfits-1');
-                    // selectedDress(activeOutfitOptionsBtn === "dress" ? null : "dress");
-                    isDressVisible(true);
 
+                    if(modelImage === "barbie") {
+                        isBarbieDressVisible(true);
+                        isMurphyShirtVisible(false);
+                        setIsMurphyClothesVisible(false);
+                        setIsBarbieClothesVisible(true);
+                    } else if (modelImage === "murphy"){
+                        isMurphyShirtVisible(true);
+                        isBarbieDressVisible(false);
+                        setIsBarbieClothesVisible(false);
+                        setIsMurphyClothesVisible(true);
+                    }
                 }}>
                 <i className="outfit-icon"
                    style={{
@@ -83,8 +98,17 @@ export default function OutfitOptions({onOutfitOptionsClick, selectedHat, select
                 onClick={() => {
                     setActiveOutfitOptionsBtn("shoe");
                     onOutfitOptionsClick("shoe");
-                    // selectedShoe(activeOutfitOptionsBtn === "shoe" ? null : "shoe");
-                    isShoeVisible(true);
+                    if(modelImage === "barbie") {
+                        isBarbieShoeVisible(true);
+                        isMurphyShoeVisible(false);
+                        setIsMurphyClothesVisible(false);
+                        setIsBarbieClothesVisible(true);
+                    } else if (modelImage === "murphy"){
+                        isMurphyShoeVisible(true);
+                        isBarbieShoeVisible(false);
+                        setIsBarbieClothesVisible(false);
+                        setIsMurphyClothesVisible(true);
+                    }
                     console.log("shoe btn clicked");
                 }}>
                 <i className="shoe-icon"
