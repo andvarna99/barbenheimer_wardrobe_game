@@ -32,6 +32,7 @@ function App() {
     const [isSidebarVisible, setIsSidebarVisible] = useState(true);
     const [isWardrobeVisible, setIsWardrobeVisible] = useState(true);
 
+    const [activeOutfitOptionsBtn, setActiveOutfitOptionsBtn] = useState(null);
     const [selectedOutfit, setSelectedOutfit] = useState(null);
     const [modelImage, setModelImage] = useState("barbie");
     const [backgroundImage, setBackgroundImage] = useState("barbie");
@@ -56,10 +57,16 @@ function App() {
 
     const handleBarbieModelBtnClick = () => {
         setModelImage("barbie");
+        setIsBarbieClothesVisible(true);
+        setIsMurphyClothesVisible(false);
+        setActiveOutfitOptionsBtn(null);
     };
 
     const handleMurphyModelBtnClick = () => {
         setModelImage("murphy");
+        setIsMurphyClothesVisible(true);
+        setIsBarbieClothesVisible(false);
+        setActiveOutfitOptionsBtn(null);
     };
 
     const handleBarbieBgBtnClick = () => {
@@ -105,6 +112,8 @@ function App() {
                                  onOutfitOptionsClick={handleOutfitClick}
                                  setIsMurphyClothesVisible={setIsMurphyClothesVisible}
                                  setIsBarbieClothesVisible={setIsBarbieClothesVisible}
+                                 setActiveOutfitOptionsBtn={setActiveOutfitOptionsBtn}
+                                 activeOutfitOptionsBtn={activeOutfitOptionsBtn}
                                  modelImage={modelImage}></OutfitOptions>
                   <ModelOptions onBarbieModelBtnClick={handleBarbieModelBtnClick}
                                 onMurphyModelBtnClick={handleMurphyModelBtnClick}
@@ -134,6 +143,7 @@ function App() {
                         setModelImage={setModelImage}
                         isBarbieClothesVisible={isBarbieClothesVisible}
                         isMurphyClothesVisible={isMurphyClothesVisible}
+                        activeOutfitOptionsBtn={activeOutfitOptionsBtn}
                         handleOutfitItemClick={handleOutfitItemClick}>
               </Wardrobe>
           </div>

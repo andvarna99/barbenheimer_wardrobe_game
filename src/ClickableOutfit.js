@@ -2,7 +2,7 @@ import React from 'react';
 import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
 import { useDrag } from 'react-dnd';
 
-function DraggableOutfit({ setModelImage, outfitType, outfitImage }) {
+function ClickableOutfit({ setModelImage, outfitType, outfitImage }) {
     console.log('setModelImage prop:', setModelImage);
 
     return (
@@ -48,4 +48,4 @@ function DraggableOutfit({ setModelImage, outfitType, outfitImage }) {
     );
 }
 
-export default DraggableOutfit;
+export default ClickableOutfit;

@@ -9,8 +9,7 @@ import heelGreyImage from ".//img/high-heel-grey.png";
 import heelLightPinkImage from ".//img/high-heel-light-pink.png";
 import heelPinkImage from ".//img/high-heel-pink.png";
 
-export default function OutfitOptions({ setIsMurphyClothesVisible, setIsBarbieClothesVisible, modelImage, onOutfitOptionsClick, selectedHat, selectedDress, selectedShoe, isMurphyHatVisible, isMurphyShoeVisible, isMurphyShirtVisible, isBarbieHatVisible, isBarbieShoeVisible, isBarbieDressVisible}) {
-    const [activeOutfitOptionsBtn, setActiveOutfitOptionsBtn] = useState(null);
+export default function OutfitOptions({ activeOutfitOptionsBtn, setActiveOutfitOptionsBtn, setIsMurphyClothesVisible, setIsBarbieClothesVisible, modelImage, onOutfitOptionsClick, selectedHat, selectedDress, selectedShoe, isMurphyHatVisible, isMurphyShoeVisible, isMurphyShirtVisible, isBarbieHatVisible, isBarbieShoeVisible, isBarbieDressVisible}) {
 
     const [isHatHovered, setIsHatHovered] = useState(false);
     const [isDressHovered, setIsDressHovered] = useState(false);
@@ -34,9 +33,13 @@ export default function OutfitOptions({ setIsMurphyClothesVisible, setIsBarbieCl
                     if(modelImage === "barbie") {
                         isBarbieHatVisible(true);
                         isMurphyHatVisible(false);
+                        setIsMurphyClothesVisible(false);
+                        setIsBarbieClothesVisible(true);
                     } else if (modelImage === "murphy"){
                         isMurphyHatVisible(true);
                         isBarbieHatVisible(false);
+                        setIsBarbieClothesVisible(false);
+                        setIsMurphyClothesVisible(true);
                     }
                 }}
             >
@@ -66,11 +69,13 @@ export default function OutfitOptions({ setIsMurphyClothesVisible, setIsBarbieCl
                     if(modelImage === "barbie") {
                         isBarbieDressVisible(true);
                         isMurphyShirtVisible(false);
-                        // setIsMurphyClothesInvisible(true);
+                        setIsMurphyClothesVisible(false);
+                        setIsBarbieClothesVisible(true);
                     } else if (modelImage === "murphy"){
                         isMurphyShirtVisible(true);
                         isBarbieDressVisible(false);
-                        // setIsBarbieClothesInvisible(true);
+                        setIsBarbieClothesVisible(false);
+                        setIsMurphyClothesVisible(true);
                     }
                 }}>
                 <i className="outfit-icon"
@@ -96,11 +101,13 @@ export default function OutfitOptions({ setIsMurphyClothesVisible, setIsBarbieCl
                     if(modelImage === "barbie") {
                         isBarbieShoeVisible(true);
                         isMurphyShoeVisible(false);
-                        // setIsMurphyClothesInvisible(true);
+                        setIsMurphyClothesVisible(false);
+                        setIsBarbieClothesVisible(true);
                     } else if (modelImage === "murphy"){
                         isMurphyShoeVisible(true);
                         isBarbieShoeVisible(false);
-                        // setIsBarbieClothesInvisible(true);
+                        setIsBarbieClothesVisible(false);
+                        setIsMurphyClothesVisible(true);
                     }
                     console.log("shoe btn clicked");
                 }}>

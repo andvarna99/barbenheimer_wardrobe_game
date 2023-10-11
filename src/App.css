@@ -28,7 +28,7 @@ body {
 @media (max-width: 1800px) {
 
   .sidebar-visible {
-    height: 800px !important;
+    height: 750px !important;
     width: 271px;
   }
   .wardrobe-visible {
@@ -377,7 +377,7 @@ button.barbie-profile:hover, button.murphy-profile:hover {
 .dev-profile-icon {
   height: 54px;
   width: 54px;
-  background-image: url("./img/barbie _icon_1.png");
+  background-image: url("./img/developer icon.png");
   object-fit: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -516,6 +516,16 @@ button.barbie-profile:hover, button.murphy-profile:hover {
   object-fit: cover !important;
   margin: 2rem 4rem 0 8rem;
 }
+.murphy-shoe-1-model {
+  background-image: url("./img/Julias shoes model.png");
+  display: inline-block;
+  background-repeat: no-repeat;
+  width: 469px;
+  height: auto;
+  background-size:contain;
+  object-fit: cover !important;
+  margin: 2rem 4rem 0 8rem;
+}
 
 /*wardrobe content*/
 
@@ -582,11 +592,9 @@ img.dress, img.hat, .img.shoe {
 .murphyShirt1 {
   width: 200px;
   height: 400px;
-  background-size:contain;
-  object-fit: cover !important;
 }
 .murphyShoe1 {
-  width: 200px;
+  width: 150px;
   height:100px;
   margin-top:10px;
 }
