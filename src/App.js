@@ -1,14 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useRef, useState} from 'react';
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import Wardrobe from "./Wardrobe";
 import OutfitOptions from './OutfitOptions';
 import ModelOptions from './ModelOptions';
 import BackgroundOptions from './BackgroundOptions';
-import Footer from './Footer.js';
 import './App.css';
-import { DropTarget, DragDropContainer } from "react-drag-drop-container";
-
 
 const getScreenshot = async (ref, width, height) => {
     const canvas = await html2canvas(ref.current, { width, height });
@@ -24,9 +21,14 @@ const getPDF = async (ref, width, height) => {
 function App() {
     const appRef = useRef(null);
 
-    const [isDressVisible, setIsDressVisible] = useState(true);
-    const [isHatVisible, setIsHatVisible] = useState(true);
-    const [isShoeVisible, setIsShoeVisible] = useState(true);
+    const [isBarbieDressVisible, setIsBarbieDressVisible] = useState(true);
+    const [isBarbieHatVisible, setIsBarbieHatVisible] = useState(true);
+    const [isBarbieShoeVisible, setIsBarbieShoeVisible] = useState(true);
+    const [isBarbieClothesVisible, setIsBarbieClothesVisible] = useState(true);
+    const [isMurphyClothesVisible, setIsMurphyClothesVisible] = useState(true);
+    const [isMurphyShirtVisible, setIsMurphyShirtVisible] = useState(true);
+    const [isMurphyHatVisible, setIsMurphyHatVisible] = useState(true);
+    const [isMurphyShoeVisible, setIsMurphyShoeVisible] = useState(true);
     const [isSidebarVisible, setIsSidebarVisible] = useState(true);
     const [isWardrobeVisible, setIsWardrobeVisible] = useState(true);
 
@@ -41,6 +43,7 @@ function App() {
     const handleOutfitClick = (outfitType) => {
         setSelectedOutfit(outfitType);
     };
+
     const handleOutfitItemClick = (outfitType) => {
         if (outfitType === 'hat1') {
             setSelectedHat('hat1');
@@ -50,15 +53,19 @@ function App() {
             setSelectedShoe('shoe3');
         }
     };
+
     const handleBarbieModelBtnClick = () => {
         setModelImage("barbie");
-    }
+    };
+
     const handleMurphyModelBtnClick = () => {
         setModelImage("murphy");
-    }
+    };
+
     const handleBarbieBgBtnClick = () => {
         setBackgroundImage("barbie");
     };
+
     const handleMurphyBgBtnClick = () => {
         setBackgroundImage("murphy");
     };
@@ -89,12 +96,20 @@ function App() {
                   <OutfitOptions selectedHat={selectedHat}
                                  selectedDress={setSelectedDress}
                                  selectedShoe={selectedShoe}
-                                 isDressVisible={setIsDressVisible}
-                                 isHatVisible={setIsHatVisible}
-                                 isShoeVisible={setIsShoeVisible}
-                                 onOutfitOptionsClick={handleOutfitClick}></OutfitOptions>
+                                 isBarbieDressVisible={setIsBarbieDressVisible}
+                                 isBarbieHatVisible={setIsBarbieHatVisible}
+                                 isBarbieShoeVisible={setIsBarbieShoeVisible}
+                                 isMurphyShirtVisible={setIsMurphyShirtVisible}
+                                 isMurphyHatVisible={setIsMurphyHatVisible}
+                                 isMurphyShoeVisible={setIsMurphyShoeVisible}
+                                 onOutfitOptionsClick={handleOutfitClick}
+                                 setIsMurphyClothesVisible={setIsMurphyClothesVisible}
+                                 setIsBarbieClothesVisible={setIsBarbieClothesVisible}
+                                 modelImage={modelImage}></OutfitOptions>
                   <ModelOptions onBarbieModelBtnClick={handleBarbieModelBtnClick}
                                 onMurphyModelBtnClick={handleMurphyModelBtnClick}
+                                setIsMurphyClothesVisible={setIsMurphyClothesVisible}
+                                setIsBarbieClothesVisible={setIsBarbieClothesVisible}
                                 onDownloadClick={handleGetPDF}></ModelOptions>
                   <BackgroundOptions onBarbieBgBtnClick={handleBarbieBgBtnClick}
                                      onMurphyBgBtnClick={handleMurphyBgBtnClick}></BackgroundOptions>
@@ -106,52 +121,22 @@ function App() {
                       </div>
                   </div>
               </div>
-              <DropTarget targetKey={"model"}
-                          dropData={"clothes"} style={"width:400px;"}>
-                  <div className={`model ${modelImage}-model`}>
-                  </div>
-              </DropTarget>
+              <div className={`model ${modelImage}-model`}>
+              </div>
               <Wardrobe selectedOutfit={selectedOutfit}
                         isWardrobeVisible={isWardrobeVisible}
-                        isDressVisible={isDressVisible}
-                        isHatVisible={isHatVisible}
-                        isShoeVisible={isShoeVisible}
-                        handleOutfitItemClick={handleOutfitItemClick}
-                        onOutfitDragEnd={() => {
-                            console.log("dropped");
-                              if(selectedHat === "hat1"){
-                                  console.log("hat1 dropped");
-                                  setIsHatVisible(false);
-                              }
-                              if(selectedDress === "dress1"){
-                                  console.log("dress1 dropped");
-                                  setModelImage('barbie-2');
-                                  setIsDressVisible(false);
-
-                              }
-                              if(selectedDress === "dress2"){
-                                  console.log("dress2 dropped");
-                                  setModelImage('barbie-3');
-                                  setIsDressVisible(false);
-
-                              }
-                              if(selectedDress === "dress3"){
-                                  console.log("dress3 dropped");
-                                setModelImage('barbie-4');
-                                setIsDressVisible(false);
-
-                              }
-                              if(selectedShoe === "shoe3"){
-                                  console.log("shoe3 dropped");
-                                  setIsShoeVisible(false);
-                              }
-                            }
-                        }
-                        >
-
+                        isBarbieHatVisible={isBarbieHatVisible}
+                        isBarbieDressVisible={isBarbieDressVisible}
+                        isBarbieShoeVisible={isBarbieShoeVisible}
+                        isMurphyShirtVisible={isMurphyShirtVisible}
+                        isMurphyHatVisible={isMurphyHatVisible}
+                        isMurphyShoeVisible={isMurphyShoeVisible}
+                        setModelImage={setModelImage}
+                        isBarbieClothesVisible={isBarbieClothesVisible}
+                        isMurphyClothesVisible={isMurphyClothesVisible}
+                        handleOutfitItemClick={handleOutfitItemClick}>
               </Wardrobe>
           </div>
-          <Footer></Footer>
       </div>
   );
 }
