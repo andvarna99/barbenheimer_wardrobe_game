@@ -1,5 +1,7 @@
 # Barbenheimer Wardrobe Design Game
 
+![image](https://github.com/andvarna99/barbenheimer_wardrobe_game/assets/118487667/99181550-9054-4b20-8558-a0a269d95a37)
+
 ### Description
 
 Welcome to Barbenheimer, a unique dress-up game featuring Barbie from the newest Barbie movie and Julius from the Oppenheimer movie. Unleash your creativity by mixing and matching different outfits on your characters!
