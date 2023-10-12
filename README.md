@@ -7,7 +7,7 @@ Welcome to Barbenheimer, a unique dress-up game featuring Barbie from the newest
 ### Features
 
 * **Intuitive Sidebar:** Contains buttons for easy navigation and selection.
-* **Click Functionality:** Simply click on the wardrobe items to dress up Barbie and Julius.
+* **Click Functionality(WIP):** Simply click on the wardrobe items to dress up Barbie and Julius.
 * **Model Switch:** Swap between Barbie and Julius seamlessly with dedicated buttons.
 * **Wardrobe Selection:** Choose from various hats, dresses/shirts, and shoes.
 * **Download Button:** Get a clean screenshot of your created ensemble without the distractions of the sidebar and wardrobe, and save it as an image.
